@@ -10,7 +10,7 @@ if not os.path.isfile('inventory.csv'):
     print('[ERROR] File not found: inventory.csv. Please make sure your'
           + ' inventory.csv file is in the same directory as this script.'
           + '\nIf you do not have an inventory.csv, you can export one'
-          + ' from deckbox.org (make sure you rename it to inventory.csv')
+          + ' from deckbox.org (make sure you rename it to inventory.csv)')
     exit()
 invFile = open('inventory.csv')
 invReader = csv.reader(invFile)
@@ -47,10 +47,10 @@ for i in deckList:
 
 # score deck completion vs collection
 score = 0
-scoreposs = 0
+scoreposs = 1 # general not in decklist
 
-if general in collection:
-    score += 10 # +10 points for an owned general
+if general in deckList:
+    score += 1
 
 for i in deckList:
     if i.startswith('1 '): # if a single (i.e. non-basic land) card in the list
@@ -59,4 +59,7 @@ for i in deckList:
             score += 1
 
 print()
-print('Score: ' + str(score) + ' of a possible ' + str(scoreposs + 10))
+print('Score: ' + str(score) + ' of a possible ' + str(scoreposs)
+      + ' (' + str(round((score / scoreposs) * 100)) + '%)')
+
+os.system("pause")
