@@ -61,5 +61,3 @@ for i in deckList:
 print()
 print('Score: ' + str(score) + ' of a possible ' + str(scoreposs)
       + ' (' + str(round((score / scoreposs) * 100)) + '%)')
-
-os.system("pause")
