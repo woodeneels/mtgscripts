@@ -1,6 +1,6 @@
 # mtgscripts
 mtg-related scripts
 
-just a few personal scripts for mtg stuff (generally edh).
+a few personal scripts for mtg stuff (generally edh) while i get to grips with python.
 
-inventory.csv is my personal inventory, replace it with your own from deckbox.org.
+inventory.csv is my personal inventory, replace it with your own from deckbox.org. make sure to rename the file to "inventory.csv" and make sure the third column is "Name" (which it is by default).
