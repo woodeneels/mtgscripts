@@ -11,7 +11,10 @@ listRegex = re.compile(r'\t(\d{0,}\t.+?(?=\t))')
 cards = str(pyperclip.paste())
 mo = listRegex.search(cards)
 matches = ''
+count = 0
 for group in listRegex.findall(cards):
     matches += group.replace('\t', ' ') + '\n'
+    count += 1
 
-print(matches)
+pyperclip.copy(matches)
+print('Copied ' + str(count) + ' lines to clipboard.')
