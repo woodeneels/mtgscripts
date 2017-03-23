@@ -1,0 +1,96 @@
+1	Alchemist's Refuge
+1	Asceticism
+1	Botanical Sanctum
+1	Breeding Pool
+1	Chasm Skulker
+1	Coiling Oracle
+1	Command Tower
+1	Conjurer's Closet
+1	Consecrated Sphinx
+1	Courser of Kruphix
+1	Crush of Tentacles
+1	Cryptic Command
+1	Cultivate
+1	Curse of the Swine
+1	Cyclonic Rift
+1	Deadeye Navigator
+1	Doubling Season
+1	Dryad Arbor
+1	Eternal Witness
+1	Evolving Wilds
+1	Explosive Vegetation
+1	Fathom Mage
+1	Flooded Grove
+1	Flooded Strand
+1	Force of Will
+4	Forest
+1	Garruk, Primal Hunter
+1	Green Sun's Zenith
+1	Gyre Sage
+1	Halimar Depths
+1	Hinterland Harbor
+1	Imprisoned in the Moon
+4	Island
+1	Kalonian Hydra
+1	Kiora's Follower
+1	Kiora, Master of the Depths
+1	Kiora, the Crashing Wave
+1	Kodama's Reach
+1	Kozilek, Butcher of Truth
+1	Krosan Grip
+1	Kruphix, God of Horizons
+1	Laboratory Maniac
+1	Lightning Greaves
+1	Llanowar Reborn
+1	Lonely Sandbar
+1	Lorescale Coatl
+1	Lorthos, the Tidemaker
+1	Lumbering Falls
+1	Managorger Hydra
+1	Master Biomancer
+1	Minamo, School at Water's Edge
+1	Misty Rainforest
+1	Momir Vig, Simic Visionary
+1	Mosswort Bridge
+1	Murkfiend Liege
+1	Mystic Snake
+1	Nissa, Vital Force
+1	Nykthos, Shrine to Nyx
+1	Okina, Temple to the Grandfathers
+1	Oracle of Mul Daya
+1	Oran-Rief, the Vastwood
+1	Overbeing of Myth
+1	Praetor's Counsel
+1	Prime Speaker Zegana
+1	Progenitor Mimic
+1	Psychosis Crawler
+1	Rapid Hybridization
+1	Reliquary Tower
+1	Rhystic Study
+1	Sakura-Tribe Elder
+1	Simic Charm
+1	Simic Growth Chamber
+1	Simic Signet
+1	Sol Ring
+1	Swiftfoot Boots
+1	Temple of Mystery
+1	Temple of the False God
+1	Thassa, God of the Sea
+1	The Great Aurora
+1	Tranquil Thicket
+1	Tropical Island
+1	Trygon Predator
+1	Ulvenwald Hydra
+1	Unravel the Aether
+1	Urban Evolution
+1	Venser's Journal
+1	Venser, Shaper Savant
+1	Verdurous Gearhulk
+1	Voidslime
+1	Vorinclex, Voice of Hunger
+1	Windswept Heath
+1	Wood Elves
+1	Yavimaya Coast
+1	Zameck Guildmage
+
+

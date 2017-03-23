@@ -1,0 +1,76 @@
+1	Abjure
+1	Arcane Denial
+1	Beastmaster Ascension
+1	Biomass Mutation
+1	Chain of Vapor
+1	Cloud Pirates
+1	Cloud Sprite
+1	Cloudfin Raptor
+1	Command Tower
+1	Counterspell
+1	Cyclonic Rift
+1	Daze
+1	Delay
+1	Deprive
+1	Disdainful Stroke
+1	Echoing Truth
+1	Edric, Spymaster of Trest
+1	Elvish Pioneer
+1	Essence Warden
+1	Faerie Impostor
+1	Faerie Miscreant
+1	Flying Men
+1	Fog
+12	Forest
+1	Galerider Sliver
+1	Garruk Wildspeaker
+1	Gemstone Caverns
+1	Grayscaled Gharial
+1	Gudul Lurker
+1	Hinterland Harbor
+1	Hope of Ghirapur
+1	Hypnotic Siren
+1	Inkmoth Nexus
+1	Invisible Stalker
+16	Island
+1	Jace's Phantasm
+1	Jhessian Infiltrator
+1	Jukai Messenger
+1	Marsh Boa
+1	Mausoleum Wanderer
+1	Meekstone
+1	Merfolk Spy
+1	Mothdust Changeling
+1	Mystical Tutor
+1	Nature's Claim
+1	Negate
+1	Notorious Throng
+1	Noxious Revival
+1	Phantasmal Image
+1	Pongify
+1	Rapid Hybridization
+1	Reclaim
+1	Reliquary Tower
+1	Sakura-Tribe Scout
+1	Scryb Sprites
+1	Shanodin Dryads
+1	Shrieking Drake
+1	Signal Pest
+1	Silhana Ledgewalker
+1	Skyshroud Ranger
+1	Spell Pierce
+1	Spellstutter Sprite
+1	Spire Tracer
+1	Spore Frog
+1	Surveilling Sprite
+1	Swan Song
+1	Treetop Scout
+1	Triton Shorestalker
+1	Veil of Birds
+1	Willow Dryad
+1	Wingcrafter
+1	Yavimaya Coast
+1	Zephyr Sprite
+1	Zodiac Rabbit
+
+

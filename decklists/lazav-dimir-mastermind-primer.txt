@@ -1,0 +1,98 @@
+1	Academy Ruins
+1	Aether Vial
+1	AEtherling
+1	Ashiok, Nightmare Weaver
+1	Bident of Thassa
+1	Choked Estuary
+1	Chromatic Lantern
+1	City of Brass
+1	Command Tower
+1	Consecrated Sphinx
+1	Consuming Aberration
+1	Counterspell
+1	Crypt Ghast
+1	Curse of the Swine
+1	Cyclonic Rift
+1	Darkslick Shores
+1	Deadeye Navigator
+1	Dimir Aqueduct
+1	Dimir Doppelganger
+1	Dimir Signet
+1	Dragonlord Silumgar
+1	Drana, Kalastria Bloodchief
+1	Drowned Catacomb
+1	Duplicant
+1	Duskmantle Guildmage
+1	Emrakul, the Promised End
+1	Encroaching Wastes
+1	Evil Twin
+1	Exotic Orchard
+1	Fellwar Stone
+1	Frost Marsh
+1	Geth, Lord of the Vault
+1	Grave Titan
+1	Greed
+1	Guard Gomazoa
+1	Halimar Depths
+1	Havengul Lich
+1	Hero's Downfall
+1	In Garruk's Wake
+1	Ink-Eyes, Servant of Oni
+3	Island
+1	Island
+1	Jace, Memory Adept
+1	Jin-Gitaxias, Core Augur
+1	Jwar Isle Refuge
+1	Karn Liberated
+1	Lightning Greaves
+1	Liliana of the Dark Realms
+1	Mana Confluence
+1	Mana Crypt
+1	Memnarch
+1	Mind's Dilation
+1	Mindcrank
+1	Mindslaver
+1	Mystical Tutor
+1	Nightveil Specter
+1	Palinchron
+1	Phenax, God of Deception
+1	Polymorphist's Jest
+1	Reflecting Pool
+1	Reliquary Tower
+1	Rise of the Dark Realms
+1	Rite of Replication
+1	Rogue's Passage
+1	Rune-Scarred Demon
+1	Sensei's Divining Top
+1	Sheoldred, Whispering One
+1	Shizo, Death's Storehouse
+1	Sol Ring
+1	Sorin Markov
+1	Sunken Hollow
+1	Swamp
+1	Swamp
+2	Swamp
+1	Swamp
+1	Swamp
+1	Swamp
+1	Swamp
+1	Sword of Body and Mind
+1	Sword of Feast and Famine
+1	Sygg, River Cutthroat
+1	Tamiyo, the Moon Sage
+1	Tectonic Edge
+1	Temple of Deceit
+1	Temple of the False God
+1	Thassa, God of the Sea
+1	Tolaria West
+1	Transguild Promenade
+1	Traumatize
+1	Vampire Nighthawk
+1	Vampiric Tutor
+1	Vela the Night-Clad
+1	Volrath's Stronghold
+1	Worst Fears
+1	Wrexial, the Risen Deep
+1	Xathrid Gorgon
+
+
