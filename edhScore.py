@@ -1,7 +1,7 @@
 #! python3
 # edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv.
 
-import requests, bs4, re, csv, os, sys
+import requests, bs4, re, csv, os, sys, argparse
 
 # --- define functions ---
 def importColl():
@@ -48,6 +48,22 @@ def getRandom():
     
     return general, deckList
 
+def getSpecific(general):
+    # check general
+    print('Searching for general: ' + general)
+    genFormatted = re.sub(r'[^a-zA-Z0-9 ]+', '', general)
+    genFormatted = str.replace(genFormatted, ' ', '-').lower()
+
+    res = requests.get('https://edhrec.com/decks/' + genFormatted)
+    res.raise_for_status()
+
+    soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    deckString = str(soup.select('.well'))
+    deckRegex = re.compile(r'>(\d.+?(?=<))')
+    deckList = deckRegex.findall(deckString)
+    
+    return deckList
+
 def printInfo(collection, general, deckList):
     # print out general
     print()
@@ -81,13 +97,22 @@ def printInfo(collection, general, deckList):
     return
 
 # --- start program ---
-reminderStr = 'usage: edhScore.py [-h] [-g "Jalira, Master Polymorphist"] [-l "decklists/edric-flying-men.txt"]'
-if len(sys.argv) < 2:
-    print('No arguments given, returning random general.')
-    print('To see a list of options, please pass the -h switch.')
+# set up argument parser
+parser = argparse.ArgumentParser(description='edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv.')
+parser.add_argument('-g','--general',help='General name e.g. "Jalira, Master Polymorphist"',default='empty',required=False)
+parser.add_argument('-l','--decklist',help='Relative path to decklist e.g. "decklists/edric-flying-men.txt"',default='empty',required=False)
+args = parser.parse_args()
+
+if (args.general is not 'empty'):
+    # handle general
+    collection = importColl()
+    deckList = getSpecific(args.general)
+    printInfo(collection, args.general, deckList)
+elif (args.decklist is not 'empty'):
+    # handle decklist
+    print('decklist: mode not implemented yet')
+else:
+    # random general
     collection = importColl()
     general, deckList = getRandom()
     printInfo(collection, general, deckList)
-else:
-    if '-h' in sys.argv:
-        print(reminderStr)
