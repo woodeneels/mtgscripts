@@ -1,5 +1,5 @@
 #! python3
-# edhRandGen.py - Pulls a random general from edhrec.com and scores vs inventory csv.
+# edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv.
 
 import requests, bs4, re, csv, os
 
@@ -20,28 +20,36 @@ for row in invReader:
         break
     collection.append(row[2])
 
-# get general
-print('Getting random general...')
+global general
+global deckList
 
-res = requests.get('https://edhrec.com/random/')
-res.raise_for_status()
+def getRandom():
+	# get general
+	print('Getting random general...')
 
-soup = bs4.BeautifulSoup(res.text, 'html.parser')
-general = soup.select('.panel-title')[0].getText()
-genLinks = soup.select('div > p > a')
-deckLink = genLinks[1].get('href')
+	res = requests.get('https://edhrec.com/random/')
+	res.raise_for_status()
+
+	soup = bs4.BeautifulSoup(res.text, 'html.parser')
+	general = soup.select('.panel-title')[0].getText()
+	genLinks = soup.select('div > p > a')
+	deckLink = genLinks[1].get('href')
+
+	# get decklist
+	print('Getting average decklist...')
+	res = requests.get('https://edhrec.com' + deckLink)
+	res.raise_for_status()
+
+	soup = bs4.BeautifulSoup(res.text, 'html.parser')
+	deckString = str(soup.select('.well'))
+	deckRegex = re.compile(r'>(\d.+?(?=<))')
+	deckList = deckRegex.findall(deckString)
+
+# print out general
 print('Your general is: ' + general)
 print()
 
-# get decklist
-print('Getting average decklist...')
-res = requests.get('https://edhrec.com' + deckLink)
-res.raise_for_status()
-
-soup = bs4.BeautifulSoup(res.text, 'html.parser')
-deckString = str(soup.select('.well'))
-deckRegex = re.compile(r'>(\d.+?(?=<))')
-deckList = deckRegex.findall(deckString)
+# print out decklist
 for i in deckList:
     print(i)
 
