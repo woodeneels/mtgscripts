@@ -1,7 +1,7 @@
 #! python3
 # edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv.
 
-import requests, bs4, re, csv, os, sys, argparse
+import requests, bs4, re, csv, os, sys, argparse, html5lib
 
 # --- define functions ---
 def importColl():
@@ -31,7 +31,7 @@ def getRandom():
     res = requests.get('https://edhrec.com/random/')
     res.raise_for_status()
 
-    soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    soup = bs4.BeautifulSoup(res.text, 'html5lib')
     general = soup.select('.panel-title')[0].getText()
     genLinks = soup.select('div > p > a')
     deckLink = genLinks[1].get('href')
@@ -41,7 +41,7 @@ def getRandom():
     res = requests.get('https://edhrec.com' + deckLink)
     res.raise_for_status()
 
-    soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    soup = bs4.BeautifulSoup(res.text, 'html5lib')
     deckString = str(soup.select('.well'))
     deckRegex = re.compile(r'>(\d.+?(?=<))')
     deckList = deckRegex.findall(deckString)
@@ -57,7 +57,7 @@ def getSpecific(general):
     res = requests.get('https://edhrec.com/decks/' + genFormatted)
     res.raise_for_status()
 
-    soup = bs4.BeautifulSoup(res.text, 'html.parser')
+    soup = bs4.BeautifulSoup(res.text, 'html5lib')
     deckString = str(soup.select('.well'))
     deckRegex = re.compile(r'>(\d.+?(?=<))')
     deckList = deckRegex.findall(deckString)
