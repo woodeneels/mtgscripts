@@ -26,8 +26,6 @@ def importColl():
 
 def getRandom():
     # get general
-    print('Getting random general...')
-
     res = requests.get('https://edhrec.com/random/')
     res.raise_for_status()
 
@@ -37,7 +35,6 @@ def getRandom():
     deckLink = genLinks[1].get('href')
 
     # get decklist
-    print('Getting average decklist...')
     res = requests.get('https://edhrec.com' + deckLink)
     res.raise_for_status()
 
@@ -70,35 +67,84 @@ def printInfo(collection, general, deckList):
     print('Your general is: ' + general)
     print()
     
-    # include general in card list for easy importing
-    print('1 ' + general)
-
-    # print out decklist
-    for i in deckList:
-        print(i)
-
     # score deck completion vs collection
     score = 0
-    scoreposs = 1 # general not in decklist
+    scorePoss = 1 # general not in decklist
+
+    if general in deckList:
+        score += 1
+
+    gOwn = False
+    if general in collection:
+        gOwn = True
+
+    # include general in card list for easy importing
+    if gOwn:
+        print('* 1 ' + general)
+    else:
+        print('  1 ' + general)
+
+    for i in deckList:
+        own = False
+        if i.startswith('1 '): # if a single (i.e. not a basic land) card in the list
+            scorePoss += 1
+            if i[2:] in collection:
+                score += 1
+                own = True
+        if own:
+            print('* ' + i)
+        else:
+            print('  ' + i)
+
+    print()
+    print('Score: ' + str(score) + ' of a possible ' + str(scorePoss)
+          + ' (' + str(round((score / scorePoss) * 100)) + '%)')
+    
+    return
+
+def calcScore(collection, general, deckList):
+    # score deck completion vs collection and return score and scorePoss
+    score = 0
+    scorePoss = 1 # general not in decklist
 
     if general in deckList:
         score += 1
 
     for i in deckList:
-        if i.startswith('1 '): # if a single (i.e. non-basic land) card in the list
-            scoreposs += 1
+        if i.startswith('1 '): # if a single (i.e. not a basic land) card in the list
+            scorePoss += 1
             if i[2:] in collection:
                 score += 1
 
-    print()
-    print('Score: ' + str(score) + ' of a possible ' + str(scoreposs)
-          + ' (' + str(round((score / scoreposs) * 100)) + '%)')
-    
-    return
+    return score, scorePoss
+
+def getCount(count, collection):
+    # set up some variables
+    general = ''
+    deckList = ''
+    score = 0
+    scorePoss = 0
+
+    # let user know we're working
+    print('Retrieving and ranking ' + str(count) + ' potential generals...')
+
+    # call getRandom in a loop and do science to it
+    for x in range(0, int(count)):
+        lGeneral, lDeckList = getRandom()
+        lScore, lScorePoss = calcScore(collection, lGeneral, lDeckList)
+        print('Found "' + lGeneral + '", score ' + str(lScore) + '/' + str(lScorePoss) + '(' + str(round((lScore / lScorePoss) * 100)) + '%).')
+        if round((lScore / lScorePoss) * 100) > round((score / scorePoss) * 100):
+            general = lGeneral
+            deckList = lDeckList
+            score = lScore
+            scorePoss = lScorePoss
+
+    return general, deckList
 
 # --- start program ---
 # set up argument parser
-parser = argparse.ArgumentParser(description='edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv.')
+parser = argparse.ArgumentParser(description='edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv. ONLY ONE ARGUMENT ACCEPTED AT A TIME. If more than one argument is specified, you\'ll have to learn the order they\'re parsed in to get a sensible result.')
+parser.add_argument('-c','--count',help='# of possible generals to retrieve and rank. Outputs highest-scoring general and list.',default='empty',required=False)
 parser.add_argument('-g','--general',help='General name e.g. "Jalira, Master Polymorphist"',default='empty',required=False)
 parser.add_argument('-l','--decklist',help='Relative path to decklist e.g. "decklists/edric-flying-men.txt"',default='empty',required=False)
 args = parser.parse_args()
@@ -111,8 +157,14 @@ if (args.general is not 'empty'):
 elif (args.decklist is not 'empty'):
     # handle decklist
     print('decklist: mode not implemented yet')
+elif (args.count is not 'empty'):
+    # handle ranking
+    collection = importColl()
+    general, deckList = getCount(args.count, collection)
+    printInfo(collection, general, deckList)
 else:
     # random general
     collection = importColl()
+    print('Getting random general...')
     general, deckList = getRandom()
     printInfo(collection, general, deckList)
