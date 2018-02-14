@@ -123,7 +123,7 @@ def getCount(count, collection):
     general = ''
     deckList = ''
     score = 0
-    scorePoss = 0
+    scorePoss = 1
 
     # let user know we're working
     print('Retrieving and ranking ' + str(count) + ' potential generals...')
