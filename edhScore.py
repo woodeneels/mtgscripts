@@ -71,9 +71,6 @@ def printInfo(collection, general, deckList):
     score = 0
     scorePoss = 1 # general not in decklist
 
-    if general in deckList:
-        score += 1
-
     gOwn = False
     if general in collection:
         gOwn = True
@@ -107,7 +104,7 @@ def calcScore(collection, general, deckList):
     score = 0
     scorePoss = 1 # general not in decklist
 
-    if general in deckList:
+    if general in collection:
         score += 1
 
     for i in deckList:
