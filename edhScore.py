@@ -140,17 +140,24 @@ def getCount(count, collection):
 
 # --- start program ---
 # set up argument parser
-parser = argparse.ArgumentParser(description='edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv. ONLY ONE ARGUMENT ACCEPTED AT A TIME. If more than one argument is specified, you\'ll have to learn the order they\'re parsed in to get a sensible result.')
-parser.add_argument('-c','--count',help='# of possible generals to retrieve and rank. Outputs highest-scoring general and list.',default='empty',required=False)
-parser.add_argument('-g','--general',help='General name e.g. "Jalira, Master Polymorphist"',default='empty',required=False)
-parser.add_argument('-l','--decklist',help='Relative path to decklist e.g. "decklists/edric-flying-men.txt"',default='empty',required=False)
+parser = argparse.ArgumentParser(description='edhScore.py - Pulls a general from edhrec.com/local decklist and scores vs inventory csv.')
+group = parser.add_mutually_exclusive_group()
+group.add_argument('-c','--count',help='# of possible generals to retrieve and rank. Outputs highest-scoring general and list.',default='empty',required=False)
+group.add_argument('-g','--general',help='General name e.g. "Jalira, Master Polymorphist"',default='empty',required=False)
+group.add_argument('-l','--decklist',help='Relative path to a local decklist e.g. "decklists/edric-flying-men.txt"',default='empty',required=False)
+outMethod = parser.add_mutually_exclusive_group()
+outMethod.add_argument('-f','--file',help='Writes the decklist out to a .txt file in the current directory with the supplied name. Will overwrite existing files - beware.',default='empty',required=False)
+outMethod.add_argument('-o','--out',help='Writes the decklist out to a .txt file in the current directory named after the general. Will overwrite existing files - beware.',action='store_true',required=False)
 args = parser.parse_args()
 
+general = ''
+deckList = ''
 if (args.general is not 'empty'):
     # handle general
     collection = importColl()
-    deckList = getSpecific(args.general)
-    printInfo(collection, args.general, deckList)
+    general = args.general
+    deckList = getSpecific(general)
+    printInfo(collection, general, deckList)
 elif (args.decklist is not 'empty'):
     # handle decklist
     print('decklist: mode not implemented yet')
@@ -165,3 +172,24 @@ else:
     print('Getting random general...')
     general, deckList = getRandom()
     printInfo(collection, general, deckList)
+
+if (args.out):
+    from slugify import slugify
+    fileName = slugify(general) + '.txt'
+    with open(fileName, 'w') as f:
+        f.write('1 ' + general + '\n')
+        i = 0
+        while i < len(deckList) - 1:
+            f.write(deckList[i] + '\n')
+            i += 1
+        f.write(deckList[i])
+elif (args.file):
+    from slugify import slugify
+    fileName = slugify(args.file) + '.txt'
+    with open(fileName, 'w') as f:
+        f.write('1 ' + general + '\n')
+        i = 0
+        while i < len(deckList) - 1:
+            f.write(deckList[i] + '\n')
+            i += 1
+        f.write(deckList[i])
