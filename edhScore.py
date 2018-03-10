@@ -183,7 +183,7 @@ if (args.out):
             f.write(deckList[i] + '\n')
             i += 1
         f.write(deckList[i])
-elif (args.file):
+elif (args.file is not 'empty'):
     from slugify import slugify
     fileName = slugify(args.file) + '.txt'
     with open(fileName, 'w') as f:
