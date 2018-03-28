@@ -73,6 +73,7 @@ def printInfo(collection, general, deckList):
 
     gOwn = False
     if general in collection:
+        score += 1
         gOwn = True
 
     # include general in card list for easy importing
