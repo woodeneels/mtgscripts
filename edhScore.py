@@ -32,7 +32,7 @@ def getRandom():
     soup = bs4.BeautifulSoup(res.text, 'html5lib')
     general = soup.select('.panel-title')[0].getText()
     genLinks = soup.select('div > p > a')
-    deckLink = genLinks[1].get('href')
+    deckLink = genLinks[2].get('href')
 
     # get decklist
     res = requests.get('https://edhrec.com' + deckLink)
