@@ -5,7 +5,7 @@
 
 import pyperclip, re
 
-listRegex = re.compile(r'\t(\d{0,}\t.+?(?=\t))')
+listRegex = re.compile(r'\t(\d{0,} \t.+?(?=\t))')
 
 # find matches
 cards = str(pyperclip.paste())
@@ -13,8 +13,8 @@ mo = listRegex.search(cards)
 matches = ''
 count = 0
 for group in listRegex.findall(cards):
-    matches += group.replace('\t', ' ') + '\n'
+    matches += group.replace('\t', '').strip() + '\n'
     count += 1
 
-pyperclip.copy(matches)
+pyperclip.copy(matches.strip())
 print('Copied ' + str(count) + ' lines to clipboard.')
